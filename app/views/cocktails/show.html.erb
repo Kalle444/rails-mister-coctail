@@ -13,7 +13,15 @@
         <% end %>
       </div>
       <div class="col-xs-6 col-xs-offset-3">
+        <% @reviews.each do |review| %>
+          <p><%= "|Review: #{review.content}| Stars: #{review.star}| " %>
+            <%= link_to("Update review", edit_review_path(review)) %>
+            <%= link_to("Delete review", destroy_review_path(review), method: 'delete') %> </p>
+        <% end %>
+      </div>
+      <div class="col-xs-6 col-xs-offset-3">
         <%= link_to "Add a dose", new_cocktail_dose_path(@cocktail), {class: "btn btn-primary"} %>
+        <%= link_to "Add a review", new_cocktail_review_path(@cocktail), {class: "btn btn-primary"} %>
         <%= link_to "Back to list of cocktails", cocktails_path, {class: "btn btn-primary"} %>
       </div>
     </div>
