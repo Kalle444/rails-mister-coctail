@@ -1,29 +1,27 @@
 <div class="container">
   <div class="row">
-    <div class="body_size">
-      <div class="col-xs-6 col-xs-offset-3">
-        <h2><%= @cocktail.name %></h2>
-        <% @doses.each do |dose| %>
-        <p><%= "#{dose.description} of #{dose.ingredient.name}" %></p>
+    <div class="col-xs-6 col-xs-offset-3">
+      <h2><%= @cocktail.name %></h2>
+      <% @doses.each do |dose| %>
+      <p><%= "#{dose.description} of #{dose.ingredient.name}" %></p>
+      <% end %>
+    </div>
+    <div class="col-xs-6 col-xs-offset-3">
+      <% @cocktail.photos.each do |photo| %>
+      <%= cl_image_tag photo.path, width: 200, height: 300, crop: :fill %>
+      <% end %>
+    </div>
+    <div class="col-xs-6 col-xs-offset-3">
+      <% @reviews.each do |review| %>
+      <p><%= "|Review: #{review.content}| Stars: #{review.star}| " %>
+        <%= link_to("Update review", edit_review_path(review)) %>
+        <%= link_to("Delete review", destroy_review_path(review), method: 'delete') %> </p>
         <% end %>
-      </div>
-      <div class="col-xs-6 col-xs-offset-3">
-        <% @cocktail.photos.each do |photo| %>
-          <%= cl_image_tag photo.path, width: 200, height: 300, crop: :fill %>
-        <% end %>
-      </div>
-      <div class="col-xs-6 col-xs-offset-3">
-        <% @reviews.each do |review| %>
-          <p><%= "|Review: #{review.content}| Stars: #{review.star}| " %>
-            <%= link_to("Update review", edit_review_path(review)) %>
-            <%= link_to("Delete review", destroy_review_path(review), method: 'delete') %> </p>
-        <% end %>
-      </div>
-      <div class="col-xs-6 col-xs-offset-3">
-        <%= link_to "Add a dose", new_cocktail_dose_path(@cocktail), {class: "btn btn-primary"} %>
-        <%= link_to "Add a review", new_cocktail_review_path(@cocktail), {class: "btn btn-primary"} %>
-        <%= link_to "Back to list of cocktails", cocktails_path, {class: "btn btn-primary"} %>
-      </div>
+    </div>
+    <div class="col-xs-6 col-xs-offset-3">
+      <%= link_to "Add a dose", new_cocktail_dose_path(@cocktail), {class: "btn btn-primary"} %>
+      <%= link_to "Add a review", new_cocktail_review_path(@cocktail), {class: "btn btn-primary"} %>
+      <%= link_to "Back to list of cocktails", cocktails_path, {class: "btn btn-primary"} %>
     </div>
   </div>
 </div>

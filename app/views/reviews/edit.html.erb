@@ -1,6 +1,5 @@
 <div class="container">
   <div class="row">
-    <div class="body_size">
       <div class="col-xs-6 col-xs-offset-3">
         <h1>Update your review</h1>
         <%= simple_form_for @review, url: update_review_path(@review) do |f| %>
@@ -10,6 +9,5 @@
         <% end %>
         <%= link_to "Back", cocktail_path(@review.cocktail), {class: "btn btn-primary"} %>
       </div>
-    </div>
   </div>
 </div>

@@ -1,17 +1,12 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:show, :edit, :update, :destroy]
-
-
-  def show
-  end
+  before_action :set_review, only: [ :edit, :update, :destroy]
+  before_action :set_cocktail, only: [:new, :create]
 
   def new
-    @cocktail = Cocktail.find(params[:cocktail_id])
     @review = Review.new
   end
 
   def create
-    @cocktail = Cocktail.find(params[:cocktail_id])
     @review = Review.new(review_params)
     @review.cocktail = @cocktail
     @review.save ? (redirect_to cocktail_path(@cocktail)) : (render 'new')
@@ -36,7 +31,9 @@ class ReviewsController < ApplicationController
     @review = Review.includes(:cocktail).find(params[:id])
   end
 
-
+  def set_cocktail
+    @cocktail = Cocktail.find(params[:cocktail_id])
+  end
 
   def review_params
     params.require(:review).permit(:content, :star, :cocktail_id)
