@@ -1,13 +1,18 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <i class="fa fa-glass navbar-logo" aria-hidden="true"></i>
+    <%= link_to cocktails_path do  %>
+    <i class="fa fa-glass navbar-logo" aria-hidden="true"></i>
+    <% end %>
+
+
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Cocktails</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Ingredients</a>
-
+    <%= link_to("Cocktails", cocktails_path, {class: "navbar-wagon-item navbar-wagon-link"}) %>
+    <!-- <a href="" class="navbar-wagon-item navbar-wagon-link">Cocktails</a> -->
+<!--     <a href="" class="navbar-wagon-item navbar-wagon-link">Ingredients</a>
+ -->
     <!-- Profile picture with dropdown list -->
 <!--     <div class="navbar-wagon-item">
       <div class="dropdown">
@@ -27,8 +32,8 @@
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li><a href="#">Cocktails</a></li>
-        <li><a href="#">Ingredients</a></li>
-      </ul>
+<!--         <li><a href="#">Ingredients</a></li>
+ -->      </ul>
     </div>
   </div>
 </div>

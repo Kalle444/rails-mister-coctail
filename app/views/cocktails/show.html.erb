@@ -6,10 +6,16 @@
         <% @doses.each do |dose| %>
         <p><%= "#{dose.description} of #{dose.ingredient.name}" %></p>
         <% end %>
+      </div>
+      <div class="col-xs-6 col-xs-offset-3">
+        <% @cocktail.photos.each do |photo| %>
+          <%= cl_image_tag photo.path, width: 200, height: 300, crop: :fill %>
+        <% end %>
+      </div>
+      <div class="col-xs-6 col-xs-offset-3">
         <%= link_to "Add a dose", new_cocktail_dose_path(@cocktail), {class: "btn btn-primary"} %>
         <%= link_to "Back to list of cocktails", cocktails_path, {class: "btn btn-primary"} %>
       </div>
     </div>
   </div>
 </div>
-
